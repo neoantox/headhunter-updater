@@ -41,10 +41,11 @@ class HeadhunterResumeUpdater
 
     /**
      * Обновление резюме
-     *
      * @link https://github.com/hhru/api/blob/master/docs/resumes.md#Информация-о-статусе-резюме-и-готовности-резюме-к-публикации
+     *
+     * @param bool $retryOnFail
      */
-    public function update()
+    public function update($retryOnFail = true)
     {
         $client = new Client();
 
@@ -62,7 +63,17 @@ class HeadhunterResumeUpdater
                 break;
 
             case 429:
-                $this->logger->warning('Обновление резюме еще не доступно');
+                $this->logger->warning(
+                    'Обновление резюме еще не доступно'
+                    . ($retryOnFail ? '. Следующая попытка: через 60 секунд...' : '')
+                );
+
+                if ($retryOnFail) {
+                    // ждем минуту и пробуем снова
+                    sleep(60);
+                    $this->update(false);
+                }
+
                 break;
 
             default:
