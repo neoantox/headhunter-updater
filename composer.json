@@ -1,0 +1,27 @@
+{
+  "name": "rudnikov/hh-autoupdate",
+  "description": "Автообновление резюме на hh.ru",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Anton Rudnikov",
+      "email": "anton@rudnikov.net"
+    }
+  ],
+  "require": {
+    "vlucas/phpdotenv": "^2.4",
+    "guzzlehttp/guzzle": "^6.3",
+    "katzgrau/klogger": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  }
+}
