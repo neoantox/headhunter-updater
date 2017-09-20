@@ -45,7 +45,7 @@ class HeadhunterResumeUpdater
      *
      * @param bool $retryOnFail
      */
-    public function update($retryOnFail = true)
+    public function update(bool $retryOnFail = true)
     {
         $client = new Client();
 
@@ -65,7 +65,7 @@ class HeadhunterResumeUpdater
             case 429:
                 $this->logger->warning(
                     'Обновление резюме еще не доступно'
-                    . ($retryOnFail ? '. Следующая попытка: через 60 секунд...' : '')
+                    . ($retryOnFail ? '. Следующая попытка через 60 секунд...' : '')
                 );
 
                 if ($retryOnFail) {
