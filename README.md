@@ -6,8 +6,8 @@
 
 Для работы скрипта необходимо получить некоторые значения:
 
-- *API_TOKEN* (можно получить здесь: [https://dev.hh.ru/admin]())
-- *RESUME_ID* (можно взять из URL с вашим резюме: [https://hh.ru/resume/RESUME_ID]())
+- *API_TOKEN* (можно получить здесь: [https://dev.hh.ru/admin](https://dev.hh.ru/admin))
+- *RESUME_ID* (можно взять из URL с вашим резюме: **https://hh.ru/resume/RESUME_ID**)
 
 ## Установка
 
